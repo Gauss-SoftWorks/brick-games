@@ -7,7 +7,8 @@ authors = [
   "Eridani <ealcantar@utexas.edu>",
   ]
 readme = "README.md"
-packages = [{include = "brick_games", from = "src"}]
+packages = [{include = "brick_games", from = "src"},
+            {include = "games", from = "src/brick_games"}]
 
 
 [tool.poetry.dependencies]

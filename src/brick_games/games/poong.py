@@ -11,3 +11,6 @@ class Pong:
 
     def quit(self) -> None:
         pass
+
+    def hello(self) -> str:
+        return "Hello"
