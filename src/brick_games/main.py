@@ -1,7 +1,7 @@
 import pyray as pr
 
 """ Import Title Screen """
-# from title import TitleScreen
+from title import TitleScreen
 
 """ Import Games """
 # from games import * --> Need to check if this works
@@ -37,7 +37,9 @@ import pyray as pr
 
 
 def main() -> None:
-    print("WIP")
+    # Create TitleScreen object
+    title = TitleScreen()
+    title.title_screen()
 
     # TODO: Create and test the Pong class
 
