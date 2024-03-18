@@ -1,4 +1,4 @@
-import pyray as pr # type: ignore
+import pyray as pr  # type: ignore
 
 
 class TitleScreen:
