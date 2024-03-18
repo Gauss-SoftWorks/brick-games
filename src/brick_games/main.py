@@ -37,16 +37,16 @@ from ui.title import TitleScreen  # type: ignore
 
 
 def main() -> None:
-    # Create TitleScreen object
-    title = TitleScreen()
+    """Begin the Title Screen"""
+    title = TitleScreen(1920, 1080)  # (1280, 720), (720, 480), (640, 480)
     title.title_screen()
 
-    # TODO: Create and test the Pong class
-
-    """ Begin the Title Screen """
+    # TODO: Create the Main Menu Screen
     # Move to Main Menu
     # Select Game
     # Play Game
+
+    # TODO: Create and test the Pong class
 
 
 if __name__ == "__main__":

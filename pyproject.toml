@@ -24,6 +24,7 @@ setuptools = "^69.1.1"
 black = "^24.2.0"
 mypy = "^1.9.0"
 isort = "^5.13.2"
+coverage = "^7.4.4"
 
 [build-system]
 requires = ["poetry-core"]
@@ -54,3 +55,32 @@ known_first_party = ["ui", "games"]
 line_length = 120
 multi_line_output = 3
 profile = "black"
+
+# COVERAGE CONFIG
+[tool.coverage.run]
+branch = true
+
+[tool.coverage.report]
+# Regexes for lines to exclude from consideration
+exclude_also = [
+    # Don't complain about missing debug-only code:
+    "def __repr__",
+    "if self\\.debug",
+
+    # Don't complain if tests don't hit defensive assertion code:
+    "raise AssertionError",
+    "raise NotImplementedError",
+
+    # Don't complain if non-runnable code isn't run:
+    "if 0:",
+    "if __name__ == .__main__.:",
+
+    # Don't complain about abstract methods, they aren't run:
+    "@(abc\\.)?abstractmethod",
+    ]
+
+ignore_errors = true
+
+[tool.coverage.html]
+directory = "coverage_html_report"
+title = "Brick Games Coverage Report"

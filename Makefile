@@ -4,7 +4,6 @@
 run:
 	poetry run python src/brick_games/main.py
 
-
 #########
 # LINTs #
 #########
@@ -16,11 +15,16 @@ format: ## run autoformatting with black
 
 lf: lint format ## Lint and format
 
-########
-# TEST #
-########
+###################
+# TEST & COVERAGE # 
+###################
 test:
 		poetry run pytest
+
+coverage:  ## clean and run unit tests with coverage
+	poetry run coverage	run --source=src -m pytest --verbose tests
+	poetry run coverage report --show-missing --fail-under 40
+	poetry run coverage html
 
 ################
 # SORT IMPORTS #
