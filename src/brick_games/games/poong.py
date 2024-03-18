@@ -1,4 +1,4 @@
-import pyray as pr
+import pyray as pr  # type: ignore
 
 
 class Pong:

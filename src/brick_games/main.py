@@ -1,7 +1,7 @@
-import pyray as pr
+import pyray as pr  # type: ignore
 
 """ Import Title Screen """
-from title import TitleScreen
+from ui.title import TitleScreen  # type: ignore
 
 """ Import Games """
 # from games import * --> Need to check if this works

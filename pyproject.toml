@@ -22,11 +22,35 @@ pynvim = "^0.5.0"
 pytest = "^8.0.2"
 setuptools = "^69.1.1"
 black = "^24.2.0"
+mypy = "^1.9.0"
+isort = "^5.13.2"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-# [tool.poetry.scripts]
-# greet = "bricks.main:greet"
-# hi = "bricks.main:hi"
+# FORMATTING CONFIG
+[tool.black]
+color = true
+line-length = 120
+target-version = ['py312']
+skip-string-normalization = true
+
+# LINTING CONFIG
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+strict = true
+exclude = [
+  "tests", ".git"
+]
+
+# SORTING IMPORT PACKAGES
+[tool.isort]
+combine_as_imports = true
+include_trailing_comma = true 
+known_first_party = ["ui", "games"]
+line_length = 120
+multi_line_output = 3
+profile = "black"

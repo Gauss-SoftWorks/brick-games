@@ -1,14 +1,14 @@
-import pyray as pr
+import pyray as pr # type: ignore
 
 
 class TitleScreen:
     def __init__(self) -> None:
         pass
 
-    def print_title(self):
+    def print_title(self) -> None:
         print('Welcome to Brick Games!')
-    
-    def title_screen(self):
+
+    def title_screen(self) -> None:
         '''Create a 640x480 title screen.'''
         # Create a 640x480 window because this is God's chosen resolution
         width = 640
