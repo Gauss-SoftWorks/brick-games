@@ -2,13 +2,12 @@
 name = "brick-games"
 version = "0.1.0"
 description = "A library of simple brick games using the raylib library."
-authors = [
-  "Mauricio <mg4145@columbia.edu>",
-  "Eridani <ealcantar@utexas.edu>",
-  ]
+authors = ["Mauricio <mg4145@columbia.edu>", "Eridani <ealcantar@utexas.edu>"]
 readme = "README.md"
-packages = [{include = "brick_games", from = "src"},
-            {include = "games", from = "src/brick_games"}]
+packages = [
+  { include = "brick_games", from = "src" },
+  { include = "games", from = "src/brick_games" },
+]
 
 
 [tool.poetry.dependencies]
@@ -19,16 +18,30 @@ numpy = "^1.26.4"
 
 [tool.poetry.group.dev.dependencies]
 pynvim = "^0.5.0"
-pytest = "^8.0.2"
 setuptools = "^69.1.1"
 black = "^24.2.0"
 mypy = "^1.9.0"
 isort = "^5.13.2"
-coverage = "^7.4.4"
+pytest-cov = "^4.1.0"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+# POE THE POET
+[tool.poe]
+# Set the poe plugin prefix to an empty string
+poetry_command = ""
+
+# POE THE POET TASKS
+[tool.poe.tasks]
+game = "python src/brick_games/main.py"
+lint = "python -m mypy src/"
+format = "python -m black src/ tests/"
+test = "pytest"
+sort = "isort src/ tests/"
+lsf = ["lint", "sort", "format"]
+
 
 # FORMATTING CONFIG
 [tool.black]
@@ -43,44 +56,52 @@ python_version = "3.11"
 warn_return_any = true
 warn_unused_configs = true
 strict = true
-exclude = [
-  "tests", ".git"
-]
+exclude = ["tests", ".git"]
 
 # SORTING IMPORT PACKAGES
 [tool.isort]
 combine_as_imports = true
-include_trailing_comma = true 
+include_trailing_comma = true
 known_first_party = ["ui", "games"]
 line_length = 120
 multi_line_output = 3
 profile = "black"
 
+# PYTEST OPTIONS
+# https://pytest-cov.readthedocs.io/en/latest/config.html#configuration
+[tool.pytest.ini_options]
+addopts = "--cov=brick_games --verbose tests --cov-report=term --cov-report=html"
+
 # COVERAGE CONFIG
 [tool.coverage.run]
 branch = true
 
+
 [tool.coverage.report]
 # Regexes for lines to exclude from consideration
 exclude_also = [
-    # Don't complain about missing debug-only code:
-    "def __repr__",
-    "if self\\.debug",
+  # Don't complain about missing debug-only code:
+  "def __repr__",
+  "if self\\.debug",
 
-    # Don't complain if tests don't hit defensive assertion code:
-    "raise AssertionError",
-    "raise NotImplementedError",
+  # Don't complain if tests don't hit defensive assertion code:
+  "raise AssertionError",
+  "raise NotImplementedError",
 
-    # Don't complain if non-runnable code isn't run:
-    "if 0:",
-    "if __name__ == .__main__.:",
+  # Don't complain if non-runnable code isn't run:
+  "if 0:",
+  "if __name__ == .__main__.:",
 
-    # Don't complain about abstract methods, they aren't run:
-    "@(abc\\.)?abstractmethod",
-    ]
+  # Don't complain about abstract methods, they aren't run:
+  "@(abc\\.)?abstractmethod",
+]
 
 ignore_errors = true
 
+fail_under = 40
+show_missing = true
+
+# HTML Report Settings
 [tool.coverage.html]
 directory = "coverage_html_report"
 title = "Brick Games Coverage Report"

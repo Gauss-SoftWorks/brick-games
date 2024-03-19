@@ -1,4 +1,5 @@
 import pyray as pr  # type: ignore
+
 from ui.title import TitleScreen  # type: ignore
 
 """ Import Games
