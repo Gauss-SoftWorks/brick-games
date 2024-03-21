@@ -6,6 +6,7 @@ class TitleScreen:
         self.width = width
         self.height = height
         self.font = font
+        self.options_font = self.font * 3 // 8
 
     def get_width_position(self, text: str, font: int) -> int:
         """Get the width coordinate for text."""
@@ -19,13 +20,16 @@ class TitleScreen:
 
         # Get x coordinates for title and quit text
         title_coord = self.get_width_position("Brick Games", self.font)
-        quit_coord = self.get_width_position("Press Q to Quit", self.font * 3 // 4)
+        quit_coord = self.get_width_position("Press Q to Quit", self.options_font)
+        continue_coord = self.get_width_position("Press C to Continue", self.options_font)
 
         while not pr.window_should_close():
             pr.begin_drawing()
-            pr.clear_background(pr.WHITE)
-            pr.draw_text("Brick Games", title_coord, self.height // 4, self.font, pr.BLACK)
-            pr.draw_text("Press Q to Quit", quit_coord, self.height * 5 // 8, self.font * 3 // 4, pr.VIOLET)
+            pr.clear_background(pr.BLACK)
+            pr.draw_text("Brick Games", title_coord, self.height // 4, self.font, pr.WHITE)
+            pr.draw_text("Press C to Continue", continue_coord, self.height // 2, self.options_font, pr.BLUE)
+            pr.draw_text("Press Q to Quit", quit_coord, self.height * 5 // 8, self.options_font, pr.VIOLET)
+
             if pr.is_key_down(81):
                 # print("Q has been pressed")
                 pr.close_window()
