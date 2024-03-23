@@ -2,36 +2,36 @@ import pyray as pr  # type: ignore
 
 
 class TitleScreen:
-    def __init__(self, width: int, height: int, font: int = 72) -> None:
-        self.width = width
-        self.height = height
-        self.font = font
-        self.options_font = self.font * 3 // 8
+    def __init__(self, window_width: int, window_height: int, main_font_size: int = 72) -> None:
+        self.window_width = window_width
+        self.window_height = window_height
+        self.main_font_size = main_font_size
+        self.options_font_size = self.main_font_size * 3 // 8
 
-    def get_width_position(self, text: str, font: int) -> int:
+    def x_center_string(self, text: str, font_size: int) -> int:
         """Get the width coordinate for text."""
-        text_width = pr.measure_text(text, font)
-        x_coord = (self.width - text_width) // 2
-        return int(x_coord)
+        text_width = pr.measure_text(text, font_size)
+        x_c = (self.window_width - text_width) // 2
+        return int(x_c)
 
-    def title_screen(self) -> None:
-        """Initiate title screen."""
-        pr.init_window(self.width, self.height, "Brick Games")
-
+    def create_title_screen(self) -> None:
         # Get x coordinates for title and quit text
-        title_coord = self.get_width_position("Brick Games", self.font)
-        quit_coord = self.get_width_position("Press Q to Quit", self.options_font)
-        continue_coord = self.get_width_position("Press C to Continue", self.options_font)
+        title_xc = self.x_center_string("Brick Games", self.main_font_size)
+        quit_xc = self.x_center_string("Press Q to Quit", self.options_font_size)
+        continue_xc = self.x_center_string("Press C to Continue", self.options_font_size)
 
-        while not pr.window_should_close():
-            pr.begin_drawing()
-            pr.clear_background(pr.BLACK)
-            pr.draw_text("Brick Games", title_coord, self.height // 4, self.font, pr.WHITE)
-            pr.draw_text("Press C to Continue", continue_coord, self.height // 2, self.options_font, pr.BLUE)
-            pr.draw_text("Press Q to Quit", quit_coord, self.height * 5 // 8, self.options_font, pr.VIOLET)
+        pr.begin_drawing()
+        pr.clear_background(pr.BLACK)
+        # Print options to the screen
+        pr.draw_text("Brick Games", title_xc, self.window_width // 4, self.main_font_size, pr.WHITE)
+        # pr.draw_text("Press C to Continue", continue_xc, self.height // 2, self.options_font, pr.BLUE)
+        # pr.draw_text("Press Q to Quit", quit_xc, self.height * 5 // 8, self.options_font, pr.VIOLET)
 
-            if pr.is_key_down(81):
-                # print("Q has been pressed")
-                pr.close_window()
-            pr.end_drawing()
-        pr.close_window()
+        # if pr.is_key_pressed(67):
+        #     print("Pressing C")
+        #     pr.clear_background(pr.WHITE)
+        #     pr.draw_text("You are continuing", 100, 100, 72, pr.BLACK)
+        # if pr.is_key_down(81):
+        #     # print("Q has been pressed")
+        #     pr.close_window()
+        pr.end_drawing()
