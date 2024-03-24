@@ -1,4 +1,5 @@
 import pyray as pr  # type: ignore
+from .game_menu import GameMenu
 
 
 class TitleScreen:
@@ -17,21 +18,22 @@ class TitleScreen:
     def create_title_screen(self) -> None:
         # Get x coordinates for title and quit text
         title_xc = self.x_center_string("Brick Games", self.main_font_size)
-        quit_xc = self.x_center_string("Press Q to Quit", self.options_font_size)
-        continue_xc = self.x_center_string("Press C to Continue", self.options_font_size)
 
         pr.begin_drawing()
         pr.clear_background(pr.BLACK)
         # Print options to the screen
         pr.draw_text("Brick Games", title_xc, self.window_width // 4, self.main_font_size, pr.WHITE)
-        # pr.draw_text("Press C to Continue", continue_xc, self.height // 2, self.options_font, pr.BLUE)
-        # pr.draw_text("Press Q to Quit", quit_xc, self.height * 5 // 8, self.options_font, pr.VIOLET)
+        menu_list = ['C to Continue', 'Q to Quit']
+        game_menu = GameMenu(menu_list, 32, tr_yc=300, center_x=True)
+        game_menu.draw_menu()
 
-        # if pr.is_key_pressed(67):
-        #     print("Pressing C")
-        #     pr.clear_background(pr.WHITE)
-        #     pr.draw_text("You are continuing", 100, 100, 72, pr.BLACK)
-        # if pr.is_key_down(81):
-        #     # print("Q has been pressed")
-        #     pr.close_window()
+        if pr.is_key_pressed(pr.KeyboardKey.KEY_C):
+            print("Pressing C")
+            pr.clear_background(pr.WHITE)
+            pr.draw_text("You are continuing", 100, 100, 72, pr.BLACK)
+        if pr.is_key_pressed(pr.KeyboardKey.KEY_Q):
+            print("Q has been pressed")
+            pr.end_drawing()
+            pr.close_window()
+
         pr.end_drawing()
