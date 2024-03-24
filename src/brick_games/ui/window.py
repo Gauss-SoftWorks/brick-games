@@ -9,6 +9,7 @@ class Window:
 
     def create_window(self) -> None:
         """Create window"""
+        # TODO: Remove hard coded window image and fps.
         window_icon = pr.load_image('games-six-six-six.png')
         pr.init_window(self.width, self.height, self.window_title)
         pr.set_target_fps(60)

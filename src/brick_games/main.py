@@ -7,8 +7,11 @@ from ui import Window
 
 if __name__ == "__main__":
     """Begin the Title Screen"""
-    window = Window(720, 480, "Brick Games")
-    print(window.height)
+    window_width = 720
+    window_height = 480
+    game_title = "Brick Games"
+
+    window = Window(window_width, window_height, game_title)
     window.create_window()
 
     while not pr.window_should_close():
