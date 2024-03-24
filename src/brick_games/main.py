@@ -3,7 +3,6 @@ import pyray as pr  # type: ignore
 from ui import TitleScreen  # type: ignore
 from ui import Window
 
-
 # from games import *
 
 if __name__ == "__main__":

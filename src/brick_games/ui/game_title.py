@@ -1,4 +1,5 @@
 import pyray as pr  # type: ignore
+
 from .helper import center_text_x
 
 
