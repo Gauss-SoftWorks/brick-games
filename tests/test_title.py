@@ -2,7 +2,7 @@ import unittest
 
 import pyray as pr
 
-from brick_games.ui.title import TitleScreen
+from ui.title_screen import TitleScreen
 
 
 class TestTitleScreen(unittest.TestCase):
