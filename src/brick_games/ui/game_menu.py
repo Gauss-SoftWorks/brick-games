@@ -1,11 +1,12 @@
-import pyray as pr
+import pyray as pr  # type: ignore
+
 from .menu_item import MenuItem
 
 
 class GameMenu:
     def __init__(
         self,
-        menu_list: list,
+        menu_list: list[str],
         tr_xc: int = 0,
         tr_yc: int = 0,
         font_size: int = 32,
@@ -19,7 +20,7 @@ class GameMenu:
         self.window_width = window_width
         self.center_x = center_x
 
-    def get_text_width(self, text) -> int:
+    def get_text_width(self, text: str) -> int:
         text_width = pr.measure_text(text, self.font_size)
         return int(text_width)
 

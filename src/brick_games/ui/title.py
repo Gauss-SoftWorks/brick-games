@@ -1,4 +1,5 @@
 import pyray as pr  # type: ignore
+
 from .game_menu import GameMenu
 
 

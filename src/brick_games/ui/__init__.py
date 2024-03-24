@@ -1,2 +1,2 @@
-from .window import Window
 from .title import TitleScreen
+from .window import Window
