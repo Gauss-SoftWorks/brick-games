@@ -9,5 +9,7 @@ class Window:
 
     def create_window(self) -> None:
         """Create window"""
+        window_icon = pr.load_image('games-six-six-six.png')
         pr.init_window(self.width, self.height, self.window_title)
         pr.set_target_fps(60)
+        pr.set_window_icon(window_icon)
