@@ -1,5 +1,6 @@
 import pyray as pr  # type: ignore
 
+from .helper import center_text_x
 from .menu_item import MenuItem
 
 
@@ -20,16 +21,11 @@ class GameMenu:
         self.window_width = window_width
         self.center_x = center_x
 
-    def get_text_width(self, text: str) -> int:
-        text_width = pr.measure_text(text, self.font_size)
-        return int(text_width)
-
     def center_menu(self) -> None:
         """Automatically horizontally center text"""
-        # Find longest string and find x-coordinate for center
+        # Find longest string in menu_list and find x-coordinate for center
         long_menu_item = max(self.menu_list, key=len)
-        max_width_menu_item = self.get_text_width(long_menu_item)
-        self.tr_xc = (self.window_width - max_width_menu_item) // 2
+        self.tr_xc = center_text_x(long_menu_item, self.font_size)
 
     def draw_menu(self) -> None:
         if self.center_x == True:
