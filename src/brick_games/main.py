@@ -3,6 +3,7 @@ import pyray as pr  # type: ignore
 from ui import TitleScreen  # type: ignore
 from ui import Window
 
+
 # from games import *
 
 if __name__ == "__main__":
@@ -16,7 +17,7 @@ if __name__ == "__main__":
 
     while not pr.window_should_close():
         # main game loop
-        title_screen = TitleScreen(window.width, window.height)
+        title_screen = TitleScreen(bg_color=pr.BLACK)
         title_screen.create_title_screen()
 
     pr.close_window()
