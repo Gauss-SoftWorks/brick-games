@@ -1,5 +1,4 @@
 import pyray as pr  # type: ignore
-
 from .game_menu import GameMenu
 from .game_title import GameTitle
 
@@ -8,7 +7,8 @@ class TitleScreen:
     def __init__(self, bg_color: pr.Color = pr.WHITE) -> None:
         self.bg_color = bg_color
 
-    def create_title_screen(self) -> None:
+    def create_title_screen(self) -> str:
+        game_state = 'title_screen'
         pr.begin_drawing()
         pr.clear_background(self.bg_color)
 
@@ -29,7 +29,6 @@ class TitleScreen:
             pr.draw_text("You are continuing", 100, 100, 72, pr.BLACK)
         if pr.is_key_pressed(pr.KeyboardKey.KEY_Q):
             print("Q has been pressed")
-            pr.end_drawing()
-            pr.close_window()
-
+            game_state = 'quit'
         pr.end_drawing()
+        return game_state

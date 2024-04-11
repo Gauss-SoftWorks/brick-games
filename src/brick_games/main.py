@@ -1,7 +1,6 @@
 import pyray as pr  # type: ignore
-
-from ui import TitleScreen  # type: ignore
 from ui import Window
+from ui import GameManager
 
 # from games import *
 
@@ -14,16 +13,5 @@ if __name__ == "__main__":
     window = Window(window_width, window_height, game_title)
     window.create_window()
 
-    while not pr.window_should_close():
-        # main game loop
-        title_screen = TitleScreen(bg_color=pr.BLACK)
-        title_screen.create_title_screen()
-
-    pr.close_window()
-
-    # TODO: Create the Main Menu Screen
-    # Move to Main Menu
-    # Select Game
-    # Play Game
-
-    # TODO: Create and test the Pong class
+    game_manager = GameManager(window, game_state='start')
+    game_manager.game_loop()
