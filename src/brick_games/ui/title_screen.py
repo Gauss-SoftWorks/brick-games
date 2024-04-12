@@ -22,13 +22,5 @@ class TitleScreen:
         game_menu = GameMenu(menu_list, 32, tr_yc=300, center_x=True)
         game_menu.draw_menu()
 
-        # Title screen logic
-        if pr.is_key_pressed(pr.KeyboardKey.KEY_C):
-            print("Pressing C")
-            pr.clear_background(pr.WHITE)
-            pr.draw_text("You are continuing", 100, 100, 72, pr.BLACK)
-        if pr.is_key_pressed(pr.KeyboardKey.KEY_Q):
-            print("Q has been pressed")
-            game_state = 'quit'
         pr.end_drawing()
         return game_state
