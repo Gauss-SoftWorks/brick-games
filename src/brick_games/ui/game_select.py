@@ -1,8 +1,8 @@
-import pyray as pr
+import pyray as pr  # type: ignore
 
 
 class GameSelect:
-    def __init__(self, game_list: list) -> None:
+    def __init__(self, game_list: list[str]) -> None:
         self.game_list = game_list
         self.state = 'title_screen'
 

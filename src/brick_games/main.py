@@ -1,5 +1,6 @@
 import pyray as pr  # type: ignore
-from ui import Window
+
+from ui import Window  # type: ignore
 from ui import GameManager
 
 # from games import *

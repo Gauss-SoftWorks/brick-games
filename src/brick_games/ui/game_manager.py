@@ -1,16 +1,14 @@
-import pyray as pr
-from ui import Window
-from ui import GameSelect
-from ui import TitleScreen  # type: ignore
+import pyray as pr  # type: ignore
+
+from ui import Window  # type: ignore
+from ui import GameSelect, TitleScreen
 
 
 class GameManager:
-    def __init__(self, window: Window, game_state: str = 'start') -> None:
+    def __init__(self, window: Window, game_state: str = 'start'):
         self.game_state = game_state
         self.title_screen = None
 
-    def game_loop(self):
-        # Game loop
         # Title screen -> Game Menu -> Game -> Game Menu
         while not pr.window_should_close():
             match self.game_state:
