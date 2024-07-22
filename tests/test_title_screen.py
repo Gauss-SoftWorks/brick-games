@@ -9,7 +9,6 @@ class TestTitleScreen(unittest.TestCase):
     def tearUp(self, bg_color: pr.Color = pr.WHITE) -> None:
         self.bg_color = bg_color
         self.title = TitleScreen(self.bg_color)
-        pass
 
     def tearDown(self) -> None:
         return super().tearDown()
