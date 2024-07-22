@@ -1,7 +1,8 @@
 import pyray as pr  # type: ignore
 
-from ui import Window  # type: ignore
-from ui import GameSelect, TitleScreen
+from .game_select import GameSelect
+from .title_screen import TitleScreen
+from .window import Window
 
 
 class GameManager:
